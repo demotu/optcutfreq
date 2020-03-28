@@ -5,12 +5,12 @@
 import numpy as np
 from scipy.signal import butter, filtfilt
 
-__author__ = 'Marcos Duarte, https://github.com/demotu/opt_cut_freq'
-__version__ = "1.0.6"
+__author__ = 'Marcos Duarte, https://github.com/demotu/optcutfreq'
+__version__ = "0.0.6"
 __license__ = "MIT"
 
 
-def opt_cut_freq(y, freq=1, fclim=[], show=False, ax=None):
+def optcutfreq(y, freq=1, fclim=[], show=False, ax=None):
     """ Automatic search of optimal filter cutoff frequency based on residual analysis.
 
     This method was proposed by Winter in his book [1]_.
@@ -75,19 +75,19 @@ def opt_cut_freq(y, freq=1, fclim=[], show=False, ax=None):
     ----------
     .. [1] Winter DA (2009) Biomechanics and motor control of human movement.
     .. [2] http://www.clinicalgaitanalysis.com/faq/cutoff.html
-    .. [3] https://github.com/demotu/opt_cut_freq/blob/master/docs/opt_cut_freq.ipynb
+    .. [3] https://github.com/demotu/optcutfreq/blob/master/docs/optcutfreq.ipynb
 
     Examples
     --------
     >>> y = np.cumsum(np.random.randn(1000))
     >>> # optimal cutoff frequency based on residual analysis and plot:
-    >>> fc_opt = opt_cut_freq(y, freq=1000, show=True)
+    >>> fc_opt = optcutfreq(y, freq=1000, show=True)
     >>> # sane analysis but specifying the frequency limits and plot:
-    >>> opt_cut_freq(y, freq=1000, fclim=[200,400], show=True)
+    >>> optcutfreq(y, freq=1000, fclim=[200,400], show=True)
     >>> # It's not always possible to find an optimal cutoff frequency
     >>> # or the one found can be wrong (run this example many times):
     >>> y = np.random.randn(100)
-    >>> opt_cut_freq(y, freq=100, show=True)
+    >>> optcutfreq(y, freq=100, show=True)
 
     """
 
@@ -139,7 +139,7 @@ def opt_cut_freq(y, freq=1, fclim=[], show=False, ax=None):
 
 
 def _plot(y, freq, freqs, res, fclim, fc_opt, B, A, ax):
-    """Plot results of the opt_cut_freq function, see its help."""
+    """Plot results of the optcutfreq function, see its help."""
     try:
         import matplotlib.pyplot as plt
     except ImportError:
