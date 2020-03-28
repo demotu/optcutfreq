@@ -1,4 +1,4 @@
-# [opt_cut_freq](https://pypi.org/project/opt_cut_freq)
+# [optcutfreq](https://pypi.org/project/optcutfreq)
 
 Automatic search of optimal filter cutoff frequency based on residual analysis
 
@@ -8,7 +8,7 @@ The optimal cutoff frequency is the one where the residual starts to change very
 Installation
 ------------
 ```
-pip install opt_cut_freq
+pip install optcutfreq
 ```
 
 Examples
@@ -16,34 +16,34 @@ Examples
 ```python
 >>> y = np.cumsum(np.random.randn(1000))
 >>> # optimal cutoff frequency based on residual analysis and plot:
->>> fc_opt = opt_cut_freq(y, freq=1000, show=True)
+>>> fc_opt = optcutfreq(y, freq=1000, show=True)
 
 >>> # sane analysis but specifying the frequency limits and plot:
->>> opt_cut_freq(y, freq=1000, fclim=[200,400], show=True)
+>>> optcutfreq(y, freq=1000, fclim=[200,400], show=True)
 
 >>> # It's not always possible to find an optimal cutoff frequency
 >>> # or the one found can be wrong (run this example many times):
 >>> y = np.random.randn(100)
->>> opt_cut_freq(y, freq=100, show=True)
+>>> optcutfreq(y, freq=100, show=True)
 ```
- * [In a Jupyter notebook](https://github.com/demotu/opt_cut_freq/blob/master/docs/opt_cut_freq.ipynb)
+ * [In a Jupyter notebook](https://github.com/demotu/optcutfreq/blob/master/docs/optcutfreq.ipynb)
 
 How to cite this work
 ---------------------
 Here is a suggestion to cite this GitHub repository:
 
-> Duarte, M. (2020) opt_cut_freq: Automatic search of optimal filter cutoff frequency based on residual analysis. GitHub repository, https://github.com/demotu/opt_cut_freq.
+> Duarte, M. (2020) optcutfreq: Automatic search of optimal filter cutoff frequency based on residual analysis. GitHub repository, https://github.com/demotu/optcutfreq.
 
 And a possible BibTeX entry:
 
 ```tex
 @misc{Duarte2020,  
     author = {Duarte, M.},
-    title = {opt_cut_freq: Automatic search of optimal filter cutoff frequency based on residual analysis},  
+    title = {optcutfreq: Automatic search of optimal filter cutoff frequency based on residual analysis},  
     year = {2020},  
     publisher = {GitHub},  
     journal = {GitHub repository},  
-    howpublished = {\url{https://github.com/demotu/opt_cut_freq}}  
+    howpublished = {\url{https://github.com/demotu/optcutfreq}}  
 }
 ```
 
