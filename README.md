@@ -1,6 +1,6 @@
 # [optcutfreq](https://pypi.org/project/optcutfreq)
 
-Automatic search of optimal filter cutoff frequency based on residual analysis
+A Python module for automatic search of optimal filter cutoff frequency based on residual analysis.
 
 The 'optimal' cutoff frequency (in the sense that a filter with such cutoff frequency removes as much noise as possible without considerably affecting the signal) is found by performing a residual analysis of the difference between filtered and unfiltered signals over a range of cutoff frequencies.  
 The optimal cutoff frequency is the one where the residual starts to change very little because it is considered that from this point, it's being filtered mostly noise and minimally signal, ideally.
@@ -26,20 +26,20 @@ Examples
 >>> y = np.random.randn(100)
 >>> optcutfreq(y, freq=100, show=True)
 ```
- * [In a Jupyter notebook](https://github.com/demotu/optcutfreq/blob/master/docs/optcutfreq.ipynb)
+ * [optcutfreq.ipynb](https://github.com/demotu/optcutfreq/blob/master/docs/optcutfreq.ipynb)
 
 How to cite this work
 ---------------------
 Here is a suggestion to cite this GitHub repository:
 
-> Duarte, M. (2020) optcutfreq: Automatic search of optimal filter cutoff frequency based on residual analysis. GitHub repository, https://github.com/demotu/optcutfreq.
+> Duarte, M. (2020) optcutfreq: A Python module for automatic search of optimal filter cutoff frequency based on residual analysis. GitHub repository, https://github.com/demotu/optcutfreq.
 
 And a possible BibTeX entry:
 
 ```tex
 @misc{Duarte2020,  
     author = {Duarte, M.},
-    title = {optcutfreq: Automatic search of optimal filter cutoff frequency based on residual analysis},  
+    title = {optcutfreq: A Python module for automatic search of optimal filter cutoff frequency based on residual analysis},  
     year = {2020},  
     publisher = {GitHub},  
     journal = {GitHub repository},  
