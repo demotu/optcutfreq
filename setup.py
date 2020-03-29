@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="optcutfreq",
-    version="0.0.7",
+    version="0.0.8",
     author="Marcos Duarte",
     author_email="duartexyz@gmail.com",
     description="Automatic search of optimal filter cutoff frequency based on residual analysis",
