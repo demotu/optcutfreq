@@ -33,7 +33,7 @@ conda install -c duartexyz optcutfreq
 >>> optcutfreq(y, freq=100, show=True)
 ```
 
-- [In a Jupyter notebook](https://github.com/demotu/optcutfreq/blob/master/docs/optcutfreq.ipynb)
+- [optcutfreq.ipynb](https://github.com/demotu/optcutfreq/blob/master/docs/optcutfreq.ipynb)
 
 ## How to cite this work
 
