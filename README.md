@@ -1,5 +1,7 @@
 # [optcutfreq](https://pypi.org/project/optcutfreq)
 
+[![DOI](https://zenodo.org/badge/250840016.svg)](https://zenodo.org/badge/latestdoi/250840016)
+
 Automatic search of optimal filter cutoff frequency based on residual analysis
 
 The 'optimal' cutoff frequency (in the sense that a filter with such cutoff frequency removes as much noise as possible without considerably affecting the signal) is found by performing a residual analysis of the difference between filtered and unfiltered signals over a range of cutoff frequencies.  
@@ -44,13 +46,15 @@ Here is a suggestion to cite this GitHub repository:
 And a possible BibTeX entry:
 
 ```tex
-@misc{Duarte2020,  
-    author = {Duarte, M.},
-    title = {optcutfreq: Automatic search of optimal filter cutoff frequency based on residual analysis},  
-    year = {2020},  
-    publisher = {GitHub},  
-    journal = {GitHub repository},  
-    howpublished = {\url{https://github.com/demotu/optcutfreq}}  
+@software{marcos_duarte_2021_4599114,
+  author       = {Marcos Duarte},
+  title        = {demotu/optcutfreq:},
+  month        = mar,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {v0.0.8},
+  doi          = {10.5281/zenodo.4599114},
+  url          = {https://doi.org/10.5281/zenodo.4599114}
 }
 ```
 
