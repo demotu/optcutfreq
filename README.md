@@ -41,14 +41,14 @@ conda install -c duartexyz optcutfreq
 
 Here is a suggestion to cite this GitHub repository:
 
-> Duarte, M. (2020) optcutfreq: Automatic search of optimal filter cutoff frequency based on residual analysis. GitHub repository, <https://github.com/demotu/optcutfreq>.
+> Marcos Duarte. (2021). optcutfreq: A Python module for automatic search of optimal filter cutoff frequency based on residual analysis (Version v0.0.8). Zenodo. http://doi.org/10.5281/zenodo.4599114
 
 And a possible BibTeX entry:
 
 ```tex
 @software{marcos_duarte_2021_4599114,
   author       = {Marcos Duarte},
-  title        = {demotu/optcutfreq:},
+  title        = {{optcutfreq: A Python module for automatic search of optimal filter cutoff frequency based on residual analysis}},
   month        = mar,
   year         = 2021,
   publisher    = {Zenodo},
