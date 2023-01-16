@@ -1,5 +1,6 @@
 # [optcutfreq](https://pypi.org/project/optcutfreq)
 
+[![PyPI version](https://badge.fury.io/py/optcutfreq.svg)](https://badge.fury.io/py/optcutfreq)
 [![DOI](https://zenodo.org/badge/250840016.svg)](https://zenodo.org/badge/latestdoi/250840016)
 
 Automatic search of optimal filter cutoff frequency based on residual analysis
