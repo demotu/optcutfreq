@@ -2,7 +2,7 @@
   "version": "1",
   "metadata": {
     "marimo_version": "0.25.2",
-    "script_metadata_hash": "4a57d148203ca7d03c7407ebf9bbe5ef"
+    "script_metadata_hash": "5ed8e598e6a74b5156d6dcaab0189b84"
   },
   "cells": [
     {
@@ -59,7 +59,7 @@
     },
     {
       "id": "lEQa",
-      "code_hash": "08eea5d83892ea8b6af3b6c3e563467a",
+      "code_hash": "15794aac01d419b267c4e0dc47547565",
       "outputs": [
         {
           "type": "data",
@@ -85,7 +85,7 @@
     },
     {
       "id": "Xref",
-      "code_hash": "c92db7281015cc9c490485d88cc41a07",
+      "code_hash": "ff186d86a13b290e5a674343dd7a4361",
       "outputs": [
         {
           "type": "data",
@@ -201,7 +201,7 @@
         {
           "type": "data",
           "data": {
-            "text/html": "<div style='display: flex;flex: 1;flex-direction: column;justify-content: flex-start;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><marimo-ui-element object-id='iLit-0' random-id='c634fff6-250a-de0f-3e85-4a53579fd116'><marimo-checkbox data-initial-value='false' data-label='&quot;&#92;u003cspan class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&#92;u003e&#92;u003cspan class=&#92;&quot;paragraph&#92;&quot;&#92;u003eautomatic search&#92;u003c/span&#92;u003e&#92;u003c/span&#92;u003e&quot;' data-disabled='false'></marimo-checkbox></marimo-ui-element><marimo-ui-element object-id='iLit-1' random-id='878e1c73-ea1a-f92f-5ae5-21bb5f286a6c'><marimo-range-slider data-initial-value='[8,18]' data-label='&quot;&#92;u003cspan class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&#92;u003e&#92;u003cspan class=&#92;&quot;paragraph&#92;&quot;&#92;u003efclim [Hz]&#92;u003c/span&#92;u003e&#92;u003c/span&#92;u003e&quot;' data-start='0' data-stop='19.9' data-step='0.1' data-steps='[]' data-debounce='false' data-orientation='&quot;horizontal&quot;' data-show-value='true' data-full-width='true' data-disabled='false'></marimo-range-slider></marimo-ui-element></div>"
+            "text/html": "<div style='display: flex;flex: 1;flex-direction: column;justify-content: flex-start;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><marimo-ui-element object-id='iLit-0' random-id='2b5a633c-ba39-b799-3897-b5e3b7af9710'><marimo-checkbox data-initial-value='false' data-label='&quot;&#92;u003cspan class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&#92;u003e&#92;u003cspan class=&#92;&quot;paragraph&#92;&quot;&#92;u003eautomatic search&#92;u003c/span&#92;u003e&#92;u003c/span&#92;u003e&quot;' data-disabled='false'></marimo-checkbox></marimo-ui-element><marimo-ui-element object-id='iLit-1' random-id='5259e327-d1d1-d322-4261-55d9d5630cb4'><marimo-range-slider data-initial-value='[8,18]' data-label='&quot;&#92;u003cspan class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&#92;u003e&#92;u003cspan class=&#92;&quot;paragraph&#92;&quot;&#92;u003efclim [Hz]&#92;u003c/span&#92;u003e&#92;u003c/span&#92;u003e&quot;' data-start='0' data-stop='19.9' data-step='0.1' data-steps='[]' data-debounce='false' data-orientation='&quot;horizontal&quot;' data-show-value='true' data-full-width='true' data-disabled='false'></marimo-range-slider></marimo-ui-element></div>"
           }
         }
       ],

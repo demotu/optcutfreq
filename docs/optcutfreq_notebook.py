@@ -5,6 +5,7 @@
 #     "matplotlib",
 #     "numpy",
 #     "optcutfreq",
+#     "pandas",
 #     "scipy",
 # ]
 # ///
@@ -84,11 +85,12 @@ def _():
     import marimo as mo
     import matplotlib.pyplot as plt
     import numpy as np
+    import pandas as pd
     from scipy.signal import butter, filtfilt
 
     from optcutfreq import optcutfreq
 
-    return butter, filtfilt, mo, np, optcutfreq, plt
+    return butter, filtfilt, mo, np, optcutfreq, pd, plt
 
 
 @app.cell(hide_code=True)
@@ -104,16 +106,16 @@ def _(mo):
 
 
 @app.cell
-def _(mo, np):
-    def read_data(path):
-        """Read the Pezzack's data file (locally or, in the browser, from the web)."""
-        try:
-            return np.loadtxt(str(path), skiprows=6, unpack=True)
-        except (OSError, ValueError):  # running in the browser (WebAssembly)
-            from pyodide.http import open_url
-            return np.loadtxt(open_url(str(path)), skiprows=6, unpack=True)
-
-    time, disp, disp2, aacc = read_data(mo.notebook_location() / 'pezzack.txt')
+def _(mo, np, pd):
+    # the data file is next to this notebook; in the browser, read it from GitHub
+    _url = 'https://raw.githubusercontent.com/demotu/optcutfreq/master/docs/pezzack.txt'
+    try:
+        _path = mo.notebook_location() / 'pezzack.txt'
+        _source = _path if _path.is_file() else _url
+    except (AttributeError, TypeError):  # in the browser, the location is a URL
+        _source = _url
+    _data = pd.read_csv(_source, sep='\t', header=None, skiprows=6).to_numpy()
+    time, disp, disp2, aacc = _data.T
     freq = np.mean(1/np.diff(time))
     return aacc, disp, freq, time
 
