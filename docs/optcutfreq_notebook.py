@@ -6,6 +6,7 @@
 #     "numpy",
 #     "optcutfreq",
 #     "pandas",
+#     "pyversions",
 #     "scipy",
 # ]
 # ///
@@ -87,10 +88,17 @@ def _():
     import numpy as np
     import pandas as pd
     from scipy.signal import butter, filtfilt
+    import pyversions
 
     from optcutfreq import optcutfreq
 
-    return butter, filtfilt, mo, np, optcutfreq, pd, plt
+    return butter, filtfilt, mo, np, optcutfreq, pd, plt, pyversions
+
+
+@app.cell
+def _(pyversions):
+    _info = pyversions.versions()
+    return
 
 
 @app.cell(hide_code=True)

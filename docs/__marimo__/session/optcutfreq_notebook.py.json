@@ -2,7 +2,7 @@
   "version": "1",
   "metadata": {
     "marimo_version": "0.25.2",
-    "script_metadata_hash": "5ed8e598e6a74b5156d6dcaab0189b84"
+    "script_metadata_hash": "d7e336c33a5882930543d909df365852"
   },
   "cells": [
     {
@@ -59,7 +59,7 @@
     },
     {
       "id": "lEQa",
-      "code_hash": "15794aac01d419b267c4e0dc47547565",
+      "code_hash": "a8cfd35c7263fd157b89731bcd487e4e",
       "outputs": [
         {
           "type": "data",
@@ -72,6 +72,26 @@
     },
     {
       "id": "PKri",
+      "code_hash": "91a773d98b11506f4773a022fefbdd72",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Linux 7.0.0-38-generic 64-bit #38-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep  4 09:10:14 UTC 2026\nCPython 3.14.7 (main, Aug 14 2026, 15:35:28) [Clang 22.1.3 ]\nOct 20 2026, 23:03:22\n\nModule            Version\nmarimo             0.25.2\nmatplotlib         3.11.2\nnumpy               2.5.4\noptcutfreq         0.0.10\npandas              3.0.6\nscipy              1.18.1\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "Xref",
       "code_hash": "4d33832d98a5260f31976b5be1a0da92",
       "outputs": [
         {
@@ -84,7 +104,7 @@
       "console": []
     },
     {
-      "id": "Xref",
+      "id": "SFPL",
       "code_hash": "ff186d86a13b290e5a674343dd7a4361",
       "outputs": [
         {
@@ -97,7 +117,7 @@
       "console": []
     },
     {
-      "id": "SFPL",
+      "id": "BYtC",
       "code_hash": "7fe27ed107ba93b312b5b85343becb66",
       "outputs": [
         {
@@ -110,7 +130,7 @@
       "console": []
     },
     {
-      "id": "BYtC",
+      "id": "RGSE",
       "code_hash": "daee67501341a42268aa761bff2e7a08",
       "outputs": [
         {
@@ -123,7 +143,7 @@
       "console": []
     },
     {
-      "id": "RGSE",
+      "id": "Kclp",
       "code_hash": "b2f18a8aff640fc46a9d00bc75950bf9",
       "outputs": [
         {
@@ -143,7 +163,7 @@
       ]
     },
     {
-      "id": "Kclp",
+      "id": "emfo",
       "code_hash": "485758badb7d9e41058f252d9d65e407",
       "outputs": [
         {
@@ -156,7 +176,7 @@
       "console": []
     },
     {
-      "id": "emfo",
+      "id": "Hstk",
       "code_hash": "3a4c8fabb64c2a7da80753f250722b20",
       "outputs": [
         {
@@ -169,7 +189,7 @@
       "console": []
     },
     {
-      "id": "Hstk",
+      "id": "nWHF",
       "code_hash": "36ef3f6e4ea7207bcd5f97444ed8a9ca",
       "outputs": [
         {
@@ -182,7 +202,7 @@
       "console": []
     },
     {
-      "id": "nWHF",
+      "id": "iLit",
       "code_hash": "c66839f89636d49d4fa2801fbd6588f5",
       "outputs": [
         {
@@ -195,20 +215,20 @@
       "console": []
     },
     {
-      "id": "iLit",
+      "id": "ZHCJ",
       "code_hash": "4c8dde075327c8faf5ba0c9bf8277003",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/html": "<div style='display: flex;flex: 1;flex-direction: column;justify-content: flex-start;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><marimo-ui-element object-id='iLit-0' random-id='2b5a633c-ba39-b799-3897-b5e3b7af9710'><marimo-checkbox data-initial-value='false' data-label='&quot;&#92;u003cspan class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&#92;u003e&#92;u003cspan class=&#92;&quot;paragraph&#92;&quot;&#92;u003eautomatic search&#92;u003c/span&#92;u003e&#92;u003c/span&#92;u003e&quot;' data-disabled='false'></marimo-checkbox></marimo-ui-element><marimo-ui-element object-id='iLit-1' random-id='5259e327-d1d1-d322-4261-55d9d5630cb4'><marimo-range-slider data-initial-value='[8,18]' data-label='&quot;&#92;u003cspan class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&#92;u003e&#92;u003cspan class=&#92;&quot;paragraph&#92;&quot;&#92;u003efclim [Hz]&#92;u003c/span&#92;u003e&#92;u003c/span&#92;u003e&quot;' data-start='0' data-stop='19.9' data-step='0.1' data-steps='[]' data-debounce='false' data-orientation='&quot;horizontal&quot;' data-show-value='true' data-full-width='true' data-disabled='false'></marimo-range-slider></marimo-ui-element></div>"
+            "text/html": "<div style='display: flex;flex: 1;flex-direction: column;justify-content: flex-start;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><marimo-ui-element object-id='ZHCJ-0' random-id='3e19093c-ce63-a06c-ea90-061206a0ed5f'><marimo-checkbox data-initial-value='false' data-label='&quot;&#92;u003cspan class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&#92;u003e&#92;u003cspan class=&#92;&quot;paragraph&#92;&quot;&#92;u003eautomatic search&#92;u003c/span&#92;u003e&#92;u003c/span&#92;u003e&quot;' data-disabled='false'></marimo-checkbox></marimo-ui-element><marimo-ui-element object-id='ZHCJ-1' random-id='4e6bcfdc-06f2-a8b0-c7fa-e86b2e2e7f04'><marimo-range-slider data-initial-value='[8,18]' data-label='&quot;&#92;u003cspan class=&#92;&quot;markdown prose dark:prose-invert contents&#92;&quot;&#92;u003e&#92;u003cspan class=&#92;&quot;paragraph&#92;&quot;&#92;u003efclim [Hz]&#92;u003c/span&#92;u003e&#92;u003c/span&#92;u003e&quot;' data-start='0' data-stop='19.9' data-step='0.1' data-steps='[]' data-debounce='false' data-orientation='&quot;horizontal&quot;' data-show-value='true' data-full-width='true' data-disabled='false'></marimo-range-slider></marimo-ui-element></div>"
           }
         }
       ],
       "console": []
     },
     {
-      "id": "ZHCJ",
+      "id": "ROlb",
       "code_hash": "a56390303ee7d8df08acdcd0a61a4afd",
       "outputs": [
         {
@@ -228,7 +248,7 @@
       ]
     },
     {
-      "id": "ROlb",
+      "id": "qnkX",
       "code_hash": "4cd93d0366c4e50319878db18e407b6e",
       "outputs": [
         {
@@ -241,7 +261,7 @@
       "console": []
     },
     {
-      "id": "qnkX",
+      "id": "TqIu",
       "code_hash": "bd8e8406dbdc8798f481f63f016284db",
       "outputs": [
         {
