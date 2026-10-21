@@ -6,11 +6,11 @@ import numpy as np
 from scipy.signal import butter, filtfilt
 
 __author__ = 'Marcos Duarte, https://github.com/demotu/optcutfreq'
-__version__ = "0.0.8"
+__version__ = "0.0.9"
 __license__ = "MIT"
 
 
-def optcutfreq(y, freq=1, fclim=[], show=False, ax=None):
+def optcutfreq(y, freq=1, fclim=None, show=False, ax=None):
     """ Automatic search of optimal filter cutoff frequency based on residual analysis.
 
     This method was proposed by Winter in his book [1]_.
@@ -28,8 +28,10 @@ def optcutfreq(y, freq=1, fclim=[], show=False, ax=None):
         Data
     freq : float, optional (default = 1)
         sampling frequency of the signal y
-    fclim : list with 2 numbers, optional (default = [])
-        limit frequencies of the noisy part or the residuals curve
+    fclim : list with 2 numbers, optional (default = None)
+        limit frequencies of the noisy part or the residuals curve.
+        If None or invalid (outside 0 and freq/2), they are searched
+        automatically.
     show : bool, optional (default = False)
         True (1) plots data in a matplotlib figure
         False (0) to not plot
@@ -75,7 +77,7 @@ def optcutfreq(y, freq=1, fclim=[], show=False, ax=None):
     ----------
     .. [1] Winter DA (2009) Biomechanics and motor control of human movement.
     .. [2] http://www.clinicalgaitanalysis.com/faq/cutoff.html
-    .. [3] https://github.com/demotu/optcutfreq/blob/master/docs/optcutfreq.ipynb
+    .. [3] https://github.com/demotu/optcutfreq/blob/master/docs/optcutfreq_notebook.py
 
     Examples
     --------
@@ -105,25 +107,28 @@ def optcutfreq(y, freq=1, fclim=[], show=False, ax=None):
         # residual between filtered and unfiltered signals
         res = np.hstack((res, np.sqrt(np.mean((yf - y)**2))))
 
+    fclim = np.asarray([] if fclim is None else fclim, dtype=float)
     # find the optimal cutoff frequency by fitting an exponential curve
     # y = A*exp(B*x)+C to the residual data and consider that the tail part
     # of the exponential (which should be the noisy part of the residuals)
     # decay starts after 3 lifetimes (exp(-3), 95% drop)
-    if not len(fclim) or np.any(fclim < 0) or np.any(fclim > freq/2):
+    if fclim.size != 2 or np.any(fclim < 0) or np.any(fclim > freq/2):
         fc1 = 0
         fc2 = int(0.95*(len(freqs)-1))
         # log of exponential turns the problem to first order polynomial fit
         # make the data always greater than zero before taking the logarithm
         reslog = np.log(np.abs(res[fc1:fc2 + 1] - res[fc2]) +
-                        1000 * np.finfo(np.float).eps)
+                        1000 * np.finfo(float).eps)
         Blog, Alog = np.polyfit(freqs[fc1:fc2 + 1], reslog, 1)
         fcini = np.nonzero(freqs >= -3 / Blog)  # 3 lifetimes
         fclim = [fcini[0][0], fc2] if np.size(fcini) else []
     else:
-        fclim = [np.nonzero(freqs >= fclim[0])[0][0],
-                 np.nonzero(freqs >= fclim[1])[0][0]]
+        # indices of the first frequencies >= limits (residuals are only
+        # computed up to C*freq/2)
+        fclim = list(np.minimum(np.searchsorted(freqs, fclim), len(freqs) - 1))
 
     # find fc_opt with linear fit y=A+Bx of the noisy part of the residuals
+    B, A = None, None
     if len(fclim) and fclim[0] < fclim[1]:
         B, A = np.polyfit(freqs[fclim[0]:fclim[1]], res[fclim[0]:fclim[1]], 1)
         # optimal cutoff frequency is the frequency where y[fc_opt] = A
@@ -145,61 +150,61 @@ def _plot(y, freq, freqs, res, fclim, fc_opt, B, A, ax):
     except ImportError:
         print('matplotlib is not available.')
     else:
-        if ax is None:
-            plt.figure(num=None, figsize=(10, 5))
-            ax = np.array([plt.subplot(121),
-                           plt.subplot(222),
-                           plt.subplot(224)])
+        # font sizes only for this figure (don't change the user's settings)
+        with plt.rc_context({'axes.labelsize': 12, 'axes.titlesize': 12,
+                             'xtick.labelsize': 12, 'ytick.labelsize': 12}):
+            if ax is None:
+                plt.figure(num=None, figsize=(10, 5))
+                ax = np.array([plt.subplot(121),
+                               plt.subplot(222),
+                               plt.subplot(224)])
 
-        plt.rc('axes', labelsize=12, titlesize=12)
-        plt.rc('xtick', labelsize=12)
-        plt.rc('ytick', labelsize=12)
-        ax[0].plot(freqs, res, 'b.', markersize=9)
-        time = np.linspace(0, len(y) / freq, len(y))
-        ax[1].plot(time, y, 'g', linewidth=1, label='Unfiltered')
-        ydd = np.diff(y, n=2) * freq ** 2
-        ax[2].plot(time[:-2], ydd, 'g', linewidth=1, label='Unfiltered')
-        if fc_opt:
-            ylin = np.poly1d([B, A])(freqs)
-            ax[0].plot(freqs, ylin, 'r--', linewidth=2)
-            ax[0].plot(freqs[fclim[0]], res[fclim[0]], 'r>',
-                       freqs[fclim[1]], res[fclim[1]], 'r<', ms=9)
-            ax[0].set_ylim(ymin=0, ymax=4 * A)
-            ax[0].plot([0, freqs[-1]], [A, A], 'r-', linewidth=2)
-            ax[0].plot([fc_opt, fc_opt], [0, A], 'r-', linewidth=2)
-            ax[0].plot(fc_opt, 0, 'ro', markersize=7, clip_on=False,
-                       zorder=9, label='$Fc_{opt}$ = %.1f Hz' % fc_opt)
-            ax[0].legend(fontsize=12, loc='best', numpoints=1, framealpha=.5)
-            # Correct the cutoff frequency for the number of passes
-            C = 0.802  # for dual pass; C = (2**(1/npasses) - 1)**0.25
-            b, a = butter(2, (fc_opt/C) / (freq / 2))
-            yf = filtfilt(b, a, y)
-            ax[1].plot(time, yf, color=[1, 0, 0, .5],
-                       linewidth=2, label='Opt. filtered')
-            ax[1].legend(fontsize=12, loc='best', framealpha=.5)
-            ax[1].set_title('Signals (RMSE = %.3g)' % A)
-            yfdd = np.diff(yf, n=2) * freq ** 2
-            ax[2].plot(time[:-2], yfdd, color=[1, 0, 0, .5],
-                       linewidth=2, label='Opt. filtered')
-            ax[2].legend(fontsize=12, loc='best', framealpha=.5)
-            resdd = np.sqrt(np.mean((yfdd - ydd) ** 2))
-            ax[2].set_title('Second derivatives (RMSE = %.3g)' % resdd)
-        else:
-            ax[0].text(.5, .5, 'Unable to find optimal cutoff frequency',
-                       horizontalalignment='center', color='r', zorder=9,
-                       transform=ax[0].transAxes, fontsize=12)
-            ax[1].set_title('Signal')
-            ax[2].set_title('Second derivative')
+            ax[0].plot(freqs, res, 'b.', markersize=9)
+            time = np.linspace(0, len(y) / freq, len(y))
+            ax[1].plot(time, y, 'g', linewidth=1, label='Unfiltered')
+            ydd = np.diff(y, n=2) * freq ** 2
+            ax[2].plot(time[:-2], ydd, 'g', linewidth=1, label='Unfiltered')
+            if fc_opt:
+                ylin = np.poly1d([B, A])(freqs)
+                ax[0].plot(freqs, ylin, 'r--', linewidth=2)
+                ax[0].plot(freqs[fclim[0]], res[fclim[0]], 'r>',
+                           freqs[fclim[1]], res[fclim[1]], 'r<', ms=9)
+                ax[0].set_ylim(ymin=0, ymax=4 * A)
+                ax[0].plot([0, freqs[-1]], [A, A], 'r-', linewidth=2)
+                ax[0].plot([fc_opt, fc_opt], [0, A], 'r-', linewidth=2)
+                ax[0].plot(fc_opt, 0, 'ro', markersize=7, clip_on=False,
+                           zorder=9, label='$Fc_{opt}$ = %.1f Hz' % fc_opt)
+                ax[0].legend(fontsize=12, loc='best', numpoints=1, framealpha=.5)
+                # Correct the cutoff frequency for the number of passes
+                C = 0.802  # for dual pass; C = (2**(1/npasses) - 1)**0.25
+                b, a = butter(2, (fc_opt/C) / (freq / 2))
+                yf = filtfilt(b, a, y)
+                ax[1].plot(time, yf, color=[1, 0, 0, .5],
+                           linewidth=2, label='Opt. filtered')
+                ax[1].legend(fontsize=12, loc='best', framealpha=.5)
+                ax[1].set_title('Signals (RMSE = %.3g)' % A)
+                yfdd = np.diff(yf, n=2) * freq ** 2
+                ax[2].plot(time[:-2], yfdd, color=[1, 0, 0, .5],
+                           linewidth=2, label='Opt. filtered')
+                ax[2].legend(fontsize=12, loc='best', framealpha=.5)
+                resdd = np.sqrt(np.mean((yfdd - ydd) ** 2))
+                ax[2].set_title('Second derivatives (RMSE = %.3g)' % resdd)
+            else:
+                ax[0].text(.5, .5, 'Unable to find optimal cutoff frequency',
+                           horizontalalignment='center', color='r', zorder=9,
+                           transform=ax[0].transAxes, fontsize=12)
+                ax[1].set_title('Signal')
+                ax[2].set_title('Second derivative')
 
-        ax[0].set_xlabel('Cutoff frequency [Hz]')
-        ax[0].set_ylabel('Residual RMSE')
-        ax[0].set_title('Residual analysis')
-        ax[0].grid()
-        # ax2.set_xlabel('Time [s]')
-        ax[1].set_xlim(0, time[-1])
-        ax[1].grid()
-        ax[2].set_xlabel('Time [s]')
-        ax[2].set_xlim(0, time[-1])
-        ax[2].grid()
-        plt.tight_layout()
-        plt.show()
+            ax[0].set_xlabel('Cutoff frequency [Hz]')
+            ax[0].set_ylabel('Residual RMSE')
+            ax[0].set_title('Residual analysis')
+            ax[0].grid()
+            # ax2.set_xlabel('Time [s]')
+            ax[1].set_xlim(0, time[-1])
+            ax[1].grid()
+            ax[2].set_xlabel('Time [s]')
+            ax[2].set_xlim(0, time[-1])
+            ax[2].grid()
+            plt.tight_layout()
+            plt.show()
