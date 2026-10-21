@@ -62,16 +62,17 @@ uvx marimo edit --sandbox docs/optcutfreq_notebook.py
 
 Here is a suggestion to cite this software, with its concept DOI, which always resolves to the latest version (to cite a specific version, use its DOI listed on [Zenodo](https://doi.org/10.5281/zenodo.4599113)):
 
-> Marcos Duarte. (2021). optcutfreq: A Python module for automatic search of optimal filter cutoff frequency based on residual analysis. Zenodo. https://doi.org/10.5281/zenodo.4599113
+> Marcos Duarte. (2026). optcutfreq: A Python module for automatic search of optimal filter cutoff frequency based on residual analysis (v0.0.10). Zenodo. https://doi.org/10.5281/zenodo.4599113
 
 And a possible BibTeX entry:
 
 ```tex
 @software{duarte_optcutfreq,
-  author       = {Marcos Duarte},
+  author       = {Duarte, Marcos},
   title        = {{optcutfreq: A Python module for automatic search of optimal filter cutoff frequency based on residual analysis}},
-  year         = 2021,
+  year         = 2026,
   publisher    = {Zenodo},
+  version      = {v0.0.10},
   doi          = {10.5281/zenodo.4599113},
   url          = {https://doi.org/10.5281/zenodo.4599113}
 }
