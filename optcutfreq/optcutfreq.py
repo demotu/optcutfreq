@@ -6,7 +6,7 @@ import numpy as np
 from scipy.signal import butter, filtfilt
 
 __author__ = 'Marcos Duarte, https://github.com/demotu/optcutfreq'
-__version__ = "0.0.9"
+__version__ = "0.0.10"
 __license__ = "MIT"
 
 
