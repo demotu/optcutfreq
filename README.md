@@ -14,6 +14,12 @@ The optimal cutoff frequency is the one where the residual starts to change very
 pip install optcutfreq
 ```
 
+The plots (parameter `show=True`) require matplotlib, which can be installed together with:
+
+```bash
+pip install "optcutfreq[plot]"
+```
+
 Or
 
 ```bash
@@ -23,6 +29,8 @@ conda install -c duartexyz optcutfreq
 ## Examples
 
 ```python
+>>> import numpy as np
+>>> from optcutfreq import optcutfreq
 >>> y = np.cumsum(np.random.randn(1000))
 >>> # optimal cutoff frequency based on residual analysis and plot:
 >>> fc_opt = optcutfreq(y, freq=1000, show=True)
@@ -36,7 +44,19 @@ conda install -c duartexyz optcutfreq
 >>> optcutfreq(y, freq=100, show=True)
 ```
 
-- [optcutfreq.ipynb](https://nbviewer.jupyter.org/github/demotu/optcutfreq/blob/master/docs/optcutfreq.ipynb)
+More examples, with Winter's benchmark data, are in a [marimo](https://marimo.io) notebook in the [docs](https://github.com/demotu/optcutfreq/tree/master/docs) directory. Run it in your browser, no installation needed:
+
+| Notebook | molab | marimo.app |
+|---|---|---|
+| [optcutfreq](https://molab.marimo.io/github/demotu/optcutfreq/blob/master/docs/optcutfreq_notebook.py) | [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/demotu/optcutfreq/blob/master/docs/optcutfreq_notebook.py/wasm) | [![Open with marimo](https://marimo.io/shield.svg)](https://marimo.app/github.com/demotu/optcutfreq/blob/master/docs/optcutfreq_notebook.py) |
+
+The notebook name links to a static preview with the outputs; the badges run the notebook in your browser with [WebAssembly](https://docs.marimo.io/guides/wasm/).
+
+Or run it locally:
+
+```bash
+uvx marimo edit --sandbox docs/optcutfreq_notebook.py
+```
 
 ## How to cite this work
 
