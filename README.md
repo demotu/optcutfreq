@@ -44,13 +44,9 @@ conda install -c duartexyz optcutfreq
 >>> optcutfreq(y, freq=100, show=True)
 ```
 
-More examples, with Winter's benchmark data, are in a [marimo](https://marimo.io) notebook in the [docs](https://github.com/demotu/optcutfreq/tree/master/docs) directory. Run it in your browser, no installation needed:
+Explore Winter's benchmark data in your browser, no installation needed:
 
-| Notebook | molab | marimo.app |
-|---|---|---|
-| [optcutfreq](https://molab.marimo.io/github/demotu/optcutfreq/blob/master/docs/optcutfreq_notebook.py) | [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/demotu/optcutfreq/blob/master/docs/optcutfreq_notebook.py/wasm) | [![Open with marimo](https://marimo.io/shield.svg)](https://marimo.app/github.com/demotu/optcutfreq/blob/master/docs/optcutfreq_notebook.py) |
-
-The notebook name links to a static preview with the outputs; the badges run the notebook in your browser with [WebAssembly](https://docs.marimo.io/guides/wasm/).
+- [optcutfreq](https://demotu.github.io/optcutfreq/optcutfreq_notebook.html) · [saved outputs](https://demotu.github.io/optcutfreq/docs/html/) · [![molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/demotu/optcutfreq/blob/master/docs/optcutfreq_notebook.py) · [![marimo](https://marimo.io/shield.svg)](https://marimo.app/github.com/demotu/optcutfreq/blob/master/docs/optcutfreq_notebook.py)
 
 Or run it locally:
 

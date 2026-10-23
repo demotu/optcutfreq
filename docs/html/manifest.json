@@ -1,0 +1,14 @@
+{
+  "exporter": "marimo export html",
+  "notebooks": [
+    {
+      "source": "docs/optcutfreq_notebook.py",
+      "source_sha256": "506cdd919f0f1b04e2001e6557233d8924619bbee6911c950609938897756301",
+      "shared_inputs_sha256": "a33776eddeeb337793702c2a0cb90bda0d815d1cef0e9e8b661ca1bea85f430b",
+      "html": "optcutfreq_notebook.html",
+      "html_sha256": "888b37837c16b6bf9777f10961026e3a35b588c77790779f69b734b5eecbd5f0",
+      "cells": 19,
+      "cells_with_saved_figures": 4
+    }
+  ]
+}
